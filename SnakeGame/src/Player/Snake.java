@@ -6,13 +6,19 @@ public class Snake {
 
 	char snake = 'o';
 	
-	char[] obstacles = {snake, '|', '_', '¯'};
+	private int initialSize = 2;
+	
+	List<Character> obstacles = new ArrayList<>(Arrays.asList(snake, '|', '_', '¯'));
 	
 	public char GetSnake() {
 		return snake;
 	}
 	
-	public char[] GetObstacles() {
+	public List<Character> GetObstacles() {
 		return obstacles;
+	}
+	
+	public int GetInitialSize() {
+		return initialSize;
 	}
 }

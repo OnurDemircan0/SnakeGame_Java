@@ -1,7 +1,5 @@
 package Collectibles;
 
-import java.util.Timer;
-import java.util.TimerTask;
 import UI.Scene;
 import java.util.Random;
 
@@ -19,6 +17,7 @@ public class CollectibleController {
     			
     			int applePositionX = random.nextInt(1, scene.GetGameScene().length - 1);
         		int applePositionY = random.nextInt(1, scene.GetGameScene()[1].length() - 1);
+        		if(applePositionY % 2 == 0) applePositionY++;
         		//System.out.println(applePositionX);
         		//System.out.println(applePositionY);
         		if(scene.GetGameScene()[applePositionX].charAt(applePositionY) != ' ') continue;

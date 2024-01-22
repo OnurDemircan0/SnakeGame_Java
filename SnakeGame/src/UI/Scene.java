@@ -1,45 +1,89 @@
 package UI;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Arrays;
+
+import Player.Scores;
 
 public class Scene {
 
-	private static String[] gameScene = {"_________________________________________",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "|                                       |",
-					   	                 "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"};
+	private final String[] defaultGameScene = {"_________________________________________",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "|                                       |",
+                                         "¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯"};
+	
+	private static String[] gameScene;
 	
 	private String mainMenu = "   _____ _   _          _  ________ \r\n"
-			                + "  / ____| \\ | |   /\\   | |/ /  ____|\r\n"
-			                + " | (___ |  \\| |  /  \\  | ' /| |__   \r\n"
-			                + "  \\___ \\| . ` | / /\\ \\ |  < |  __|  \r\n"
-			                + "  ____) | |\\  |/ ____ \\| . \\| |____ \r\n"
-			                + " |_____/|_| \\_/_/    \\_\\_|\\_\\______|\r\n"
-			                + "                                    \r\n"
-			                + " Select Difficulty \r\n"
-			                + " 1.Easy \r\n"
-			                + " 2.Medium \r\n"
-			                + " 3.Hard \r\n"
-			                + " 4.Expert \r\n";
+                            + "  / ____| \\ | |   /\\   | |/ /  ____|\r\n"
+                            + " | (___ |  \\| |  /  \\  | ' /| |__   \r\n"
+                            + "  \\___ \\| . ` | / /\\ \\ |  < |  __|  \r\n"
+                            + "  ____) | |\\  |/ ____ \\| . \\| |____ \r\n"
+                            + " |_____/|_| \\_/_/    \\_\\_|\\_\\______|\r\n"
+                            + "                                    \r\n"
+                            + " 1.Play \r\n"
+                            + " 2.Difficulty \r\n"
+                            + " 3.HighScores \r\n"
+                            + "\r\n"
+                            + "\r\n"
+                            + "\r\n"
+                            + "\r\n"
+                            + "\r\n"
+                            + "\r\n"
+                            + "\r\n"
+                            + "\r\n"
+                            + "\r\n"
+                            + "\r\n"
+                            + "\r\n";
+	
+	private String difficultyMenu = "   _____ _   _          _  ________ \r\n"
+			                      + "  / ____| \\ | |   /\\   | |/ /  ____|\r\n"
+			                      + " | (___ |  \\| |  /  \\  | ' /| |__   \r\n"
+			                      + "  \\___ \\| . ` | / /\\ \\ |  < |  __|  \r\n"
+			                      + "  ____) | |\\  |/ ____ \\| . \\| |____ \r\n"
+			                      + " |_____/|_| \\_/_/    \\_\\_|\\_\\______|\r\n"
+			                      + "                                    \r\n"
+			                      + " Select Difficulty \r\n"
+			                      + " Q.Easy \r\n"
+			                      + " W.Medium \r\n"
+			                      + " E.Hard \r\n"
+			                      + " R.Expert \r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n";
+	
+	private String highScoresMenu = "   _____ _   _          _  ________ \r\n"
+                                  + "  / ____| \\ | |   /\\   | |/ /  ____|\r\n"
+                                  + " | (___ |  \\| |  /  \\  | ' /| |__   \r\n"
+                                  + "  \\___ \\| . ` | / /\\ \\ |  < |  __|  \r\n"
+                                  + "  ____) | |\\  |/ ____ \\| . \\| |____ \r\n"
+                                  + " |_____/|_| \\_/_/    \\_\\_|\\_\\______|\r\n"
+                                  + "                                    \r\n"
+                                  + " Type Z to exit!"
+                                  + " HighScores \r\n";
 	
 	private String gameOverScene = "  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⠀⠀⢀⣤⣤⣤⣶⣶⣷⣤⣀\r\n"
                                  + "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⣶⣶⠀⠀⠀⠀⣠⣾⣿⣿⡇⠀⣿⣿⣿⣿⠿⠛⠉⠉⠀\r\n"
@@ -60,7 +104,8 @@ public class Scene {
                                  + "⠀⠀⠀⠀⣼⣿⣿⡟⠀⠀⠀⠀⠀⣠⣿⣿⣿⠀⢹⣿⣿⣿⣿⣿⡟⠀⠀⠀⣼⣿⣿⣷⣶⣿⣿⣿⣿⣿⣿⡟⠀⠀⠀⠀⠀⠸⣿⣿⡆⠀⠀\r\n"
                                  + "⠀⠀⠀⠀⢹⣿⣿⣇⠀⠀⢀⣠⣴⣿⣿⣿⡿⠀⠈⣿⣿⣿⣿⡟⠀⠀⠀⢰⣿⣿⣿⠿⠟⠛⠉⠁⠸⢿⡟⠀⠀⠀⠀⠀⠀⠀⠘⠋⠁⠀⠀\r\n"
                                  + "⠀⠀⠀⠀⠈⢻⣿⣿⣿⣾⣿⣿⣿⣿⣿⠟⠁⠀⠀⠸⣿⣿⡿⠁⠀⠀⠀⠈⠙⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\r\n"
-                                 + "⠀⠀⠀⠀⠀⠀⠉⠛⠿⠿⠿⠿⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀           ";
+                                 + "⠀⠀⠀⠀⠀⠀⠉⠛⠿⠿⠿⠿⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   \r\n"
+                                 + "\r\n";
 	
 	private String gameOverScene2 = "   _____          __  __ ______   \r\n"
 			                      + "  / ____|   /\\   |  \\/  |  ____|  \r\n"
@@ -74,9 +119,29 @@ public class Scene {
 			                      + "    | |__| | \\  /  | |____| | \\ \\ \r\n"
 			                      + "     \\____/   \\/   |______|_|  \\_\\\r\n"
 			                      + "                                  \r\n"
-			                      + "                                  ";
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n"
+			                      + "\r\n";
+	
+	Scores scores = new Scores();
 	
 	public Scene() {
+		
+		
+	}
+	
+	public void DefaultGameSceneOperation() {
+		gameScene = Arrays.copyOf(defaultGameScene, defaultGameScene.length);
+	}
+	
+	public void GameScene() {
+		System.out.println("Score: " + scores.GetCurrentScore());
 		
 		for(String var : gameScene) {
 			System.out.println(var);
@@ -95,8 +160,16 @@ public class Scene {
 		return mainMenu;
 	}
 	
+	public String GetDifficultyMenu() {
+		return difficultyMenu;
+	}
+	
+	public String GetHighScoresMenu() {
+		return highScoresMenu;
+	}
+	
 	public String GetGameOverScene() {
-		return gameOverScene;
+		return gameOverScene2;
 	}
 	
 }
